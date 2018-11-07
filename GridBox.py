@@ -14,7 +14,7 @@ class GridBox:
         self.__chiptype = constant.CHIPTYPE.none
 
     #Sets the chip type to the corresponding player.
-    def updateChip(self, player):
+    def update_chip(self, player):
         if player != 1 and player != 2:
             raise ValueError("Incorrect player value entered when updating a Chip!")
         if player == 1:
@@ -22,11 +22,11 @@ class GridBox:
         else:
             self.__chiptype = constant.CHIPTYPE.player2
 
-    def getType(self):
+    def get_type(self):
         return self.__chiptype
 
-    def getX(self):
+    def get_x(self):
         return self.__xpos
 
-    def getY(self):
+    def get_y(self):
         return self.__ypos

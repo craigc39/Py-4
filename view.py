@@ -8,7 +8,7 @@ class py4view:
         self.__model = board
         
 
-    def runGame(self):
+    def run_game(self):
         while 1:
             pygame.init()
             pygame.font.init()
@@ -18,27 +18,25 @@ class py4view:
                 if event.type == pygame.QUIT: sys.exit()
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_0:
-                        self.__model.AddPiece(0)
+                        self.__model.add_piece(0)
                     if event.key == pygame.K_1:
-                        self.__model.AddPiece(1)
+                        self.__model.add_piece(1)
                     if event.key == pygame.K_2:
-                        self.__model.AddPiece(2)
+                        self.__model.add_piece(2)
                     if event.key == pygame.K_3:
-                        self.__model.AddPiece(3)
+                        self.__model.add_piece(3)
                     if event.key == pygame.K_4:
-                        self.__model.AddPiece(4)
+                        self.__model.add_piece(4)
                     if event.key == pygame.K_5:
-                        self.__model.AddPiece(5)
+                        self.__model.add_piece(5)
                     if event.key == pygame.K_6:
-                        self.__model.AddPiece(6)
+                        self.__model.add_piece(6)
     
-            for column in self.__model.getBoard():
+            for column in self.__model.get_board():
                 for box in column:
-                    if box.getType() == constant.CHIPTYPE.none:
-                        pygame.draw.rect(screen, constant.GREEN, [box.getX() * constant.BLOCKSIZE, box.getY() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE], 2)
-                    elif box.getType() == constant.CHIPTYPE.player1:
-                        pygame.draw.rect(screen, constant.RED, [box.getX() * constant.BLOCKSIZE, box.getY() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE])
-                    elif box.getType() == constant.CHIPTYPE.player2:
-                        pygame.draw.rect(screen, constant.BLUE, [box.getX() * constant.BLOCKSIZE, box.getY() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE])
-                    pygame.draw.rect(screen, constant.GREEN, [box.getX() * constant.BLOCKSIZE, box.getY() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE], 2)
+                    if box.get_type() == constant.CHIPTYPE.player1:
+                        pygame.draw.rect(screen, constant.RED, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE])
+                    elif box.get_type() == constant.CHIPTYPE.player2:
+                        pygame.draw.rect(screen, constant.BLUE, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE])
+                    pygame.draw.rect(screen, constant.GREEN, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE], 2)
             pygame.display.flip()

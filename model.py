@@ -13,7 +13,7 @@ class Board:
         
 
     #maybe add a start game which resets the game instead of init?
-    def startGame(self):
+    def start_game(self):
         #GENERATE GRID BOXES HERE BASED ON SIZE OF BOARD
         tempBoxes = []
         for i in range(0, constant.SIZEX):
@@ -27,11 +27,11 @@ class Board:
         self.__turn = constant.TURN.player1
         
     #Returns a List of GridBox's for the board to fill.
-    def getBoard(self):
+    def get_board(self):
         return self.__boardGridBoxes
 
     #Adds a chip based on player turn at the column specified in column (0 to SIZEX - 1).
-    def AddPiece(self, column):
+    def add_piece(self, column):
         #Check that it is a player turn
         if self.__turn == constant.TURN.neither:
             raise ValueError("Game must be started to place a chip!")
@@ -50,17 +50,17 @@ class Board:
             player = 2
 
         for i in range(constant.SIZEY - 1, -1, -1):
-            if i == 0 and columnAdd[i].getType() != constant.CHIPTYPE.none:
+            if i == 0 and columnAdd[i].get_type() != constant.CHIPTYPE.none:
                 print("You can't add here!")
                 #Play turn again!
                 break;
-            elif columnAdd[i].getType() == constant.CHIPTYPE.none:
-                columnAdd[i].updateChip(player)
-                self.AdvanceTurn()
+            elif columnAdd[i].get_type() == constant.CHIPTYPE.none:
+                columnAdd[i].update_chip(player)
+                self.advance_turn()
                 break
         
 
-    def AdvanceTurn(self):
+    def advance_turn(self):
         if self.__turn == constant.TURN.neither:
             print("Game must be started!")
         elif self.__turn == constant.TURN.player1:
@@ -69,7 +69,7 @@ class Board:
             self.__turn = constant.TURN.player1
 
     #Checks if a certain player has won
-    def CheckForWin(self):
+    def check_for_win(self):
         #Print out winner, end game
         print("Player 1 wins!")
         self.__playing = False

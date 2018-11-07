@@ -1,9 +1,9 @@
 import model, sys, pygame, GridBox, view, pygame
 
 model = model.Board()
-model.startGame()
+model.start_game()
 
 view = view.py4view(model)
 
-view.runGame()
+view.run_game()
 
