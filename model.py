@@ -68,6 +68,9 @@ class Board:
         else:
             self.__turn = constant.TURN.player1
 
+    def game_playing(self):
+        return self.__playing
+
     #Checks if a certain player has won
     def check_for_win(self):
         #Print out winner, end game
