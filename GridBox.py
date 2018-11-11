@@ -25,6 +25,9 @@ class GridBox:
     def get_type(self):
         return self.__chiptype
 
+    def is_type(self, type):
+        return self.__chiptype == type
+
     def get_x(self):
         return self.__xpos
 

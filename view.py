@@ -39,7 +39,6 @@ class py4view:
                         self.__model.add_piece(6)
                         eventgo = True
             if eventgo:
-                #self.__model.check_for_win()
                 if not self.__model.game_playing():
                     exit()
                 for column in self.__model.get_board():

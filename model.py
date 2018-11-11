@@ -46,8 +46,10 @@ class Board:
         #Turn can't be neither, set correct player for placing chip
         if self.__turn == constant.TURN.player1:
             player = 1
+            chiptype = constant.CHIPTYPE.player1
         else:
             player = 2
+            chiptype = constant.CHIPTYPE.player2
 
         for i in range(constant.SIZEY - 1, -1, -1):
             if i == 0 and columnAdd[i].get_type() != constant.CHIPTYPE.none:
@@ -56,6 +58,7 @@ class Board:
                 break;
             elif columnAdd[i].get_type() == constant.CHIPTYPE.none:
                 columnAdd[i].update_chip(player)
+                self.check_for_win(column, i, chiptype)
                 self.advance_turn()
                 break
         
@@ -71,8 +74,31 @@ class Board:
     def game_playing(self):
         return self.__playing
 
-    #Checks if a certain player has won
-    def check_for_win(self):
+    #Checks if a certain player has won after adding chip at position x, y
+    def check_for_win(self, x, y, player):
         #Print out winner, end game
-        print("Player 1 wins!")
-        self.__playing = False
+        
+        #check the diagonal up right
+        tempscorediagonalupright = 1
+        for i in range(x+1, x+3):
+            for j in range(y+1, y+3):
+                if i < constant.SIZEX and j < constant.SIZEY:
+                    if self.__boardGridBoxes[i][j].is_type(player):
+                        tempscorediagonalupright += 1
+                        print(tempscore
+                    else:
+                        break
+            break
+
+        for i in range(x-1, x-3):
+            for j in range(y-1, y-3):
+                if i > 0 and j > 0:
+                    if self.__boardGridBoxes[i][j].is_type(player):
+                        tempscorediagonalupright += 1
+                    else:
+                        break
+            break
+        
+        if tempscorediagonalupright >= 4:
+            print("Player 1 wins!")
+            self.__playing = False
