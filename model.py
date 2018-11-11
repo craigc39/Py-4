@@ -30,6 +30,10 @@ class Board:
     def get_board(self):
         return self.__boardGridBoxes
 
+    #returns the turn
+    def get_turn(self):
+        return self.__turn
+
     #Adds a chip based on player turn at the column specified in column (0 to SIZEX - 1).
     def add_piece(self, column):
         #Check that it is a player turn

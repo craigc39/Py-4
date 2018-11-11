@@ -11,6 +11,7 @@ class py4view:
     def run_game(self):
         pygame.init()
         pygame.font.init()
+        myfont = pygame.font.SysFont('Times New Roman', 30)
         screen = pygame.display.set_mode(constant.SIZE)
         while self.__model.game_playing():
             eventgo = True
@@ -38,9 +39,9 @@ class py4view:
                     if event.key == pygame.K_7:
                         self.__model.add_piece(6)
                         eventgo = True
+            #update view whenever a piece is added before checking for win!, will need to fix model for this
             if eventgo:
-                if not self.__model.game_playing():
-                    exit()
+                screen.fill(constant.BLACK)
                 for column in self.__model.get_board():
                     for box in column:
                         if box.get_type() == constant.CHIPTYPE.player1:
@@ -48,6 +49,13 @@ class py4view:
                         elif box.get_type() == constant.CHIPTYPE.player2:
                             pygame.draw.rect(screen, constant.BLUE, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE])
                         pygame.draw.rect(screen, constant.GREEN, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE], 2)
+                if self.__model.get_turn() == constant.TURN.player1:
+                    textsurface = myfont.render("Turn: Player 1", False, constant.RED)
+                else:
+                    textsurface = myfont.render("Turn: Player 2", False, constant.RED)
+                screen.blit(textsurface,(0,constant.SIZEY * constant.BLOCKSIZE))
                 pygame.display.flip()
                 eventgo = False
+                if not self.__model.game_playing():
+                    exit()
 
