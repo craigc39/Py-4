@@ -47,12 +47,12 @@ class py4view:
                         if box.get_type() == constant.CHIPTYPE.player1:
                             pygame.draw.rect(screen, constant.RED, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE])
                         elif box.get_type() == constant.CHIPTYPE.player2:
-                            pygame.draw.rect(screen, constant.BLUE, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE])
-                        pygame.draw.rect(screen, constant.GREEN, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE], 2)
+                            pygame.draw.rect(screen, constant.YELLOW, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE])
+                        pygame.draw.rect(screen, constant.BLUE, [box.get_x() * constant.BLOCKSIZE, box.get_y() * constant.BLOCKSIZE, constant.BLOCKSIZE, constant.BLOCKSIZE], 2)
                 if self.__model.get_turn() == constant.TURN.player1:
                     textsurface = myfont.render("Turn: Player 1", False, constant.RED)
                 else:
-                    textsurface = myfont.render("Turn: Player 2", False, constant.RED)
+                    textsurface = myfont.render("Turn: Player 2", False, constant.YELLOW)
                 screen.blit(textsurface,(0,constant.SIZEY * constant.BLOCKSIZE))
                 pygame.display.flip()
                 eventgo = False
