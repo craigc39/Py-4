@@ -8,4 +8,4 @@ One issue:
 
 View also needs to look better and potentially get better performance?
 
-![alt text](https://raw.githubusercontent.com/craigc39/Py-4/master/sample.png)
+![alt text](https://raw.githubusercontent.com/craigc39/Py-4/master/samplecorrect.png)
