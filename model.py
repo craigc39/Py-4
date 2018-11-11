@@ -80,25 +80,84 @@ class Board:
         
         #check the diagonal up right
         tempscorediagonalupright = 1
-        for i in range(x+1, x+3):
-            for j in range(y+1, y+3):
-                if i < constant.SIZEX and j < constant.SIZEY:
-                    if self.__boardGridBoxes[i][j].is_type(player):
-                        tempscorediagonalupright += 1
-                        print(tempscore
-                    else:
-                        break
-            break
+        for i in range(1, 4):
+            if x-i >= 0 and y+i < constant.SIZEY:
+                if self.__boardGridBoxes[x-i][y+i].is_type(player):
+                    tempscorediagonalupright += 1
+                else:
+                    break
 
-        for i in range(x-1, x-3):
-            for j in range(y-1, y-3):
-                if i > 0 and j > 0:
-                    if self.__boardGridBoxes[i][j].is_type(player):
-                        tempscorediagonalupright += 1
-                    else:
-                        break
-            break
+        for i in range(1, 4):
+            if x+i < constant.SIZEX and y-i >=0:
+                if self.__boardGridBoxes[x+i][y-i].is_type(player):
+                    tempscorediagonalupright += 1
+                else:
+                    break
         
         if tempscorediagonalupright >= 4:
-            print("Player 1 wins!")
+            #fix with correct player
+            print("Player X wins!")
+            self.__playing = False
+
+        #check the diagonal down right
+        tempscorediagonaldownright = 1
+        for i in range(1, 4):
+            if x-i >= 0 and y-i >= 0:
+                if self.__boardGridBoxes[x-i][y-i].is_type(player):
+                    tempscorediagonaldownright += 1
+                else:
+                    break
+
+        for i in range(1, 4):
+            if x+i < constant.SIZEX and y+i < constant.SIZEY:
+                if self.__boardGridBoxes[x+i][y+i].is_type(player):
+                    tempscorediagonaldownright += 1
+                else:
+                    break
+        
+        if tempscorediagonaldownright >= 4:
+            #fix with correct player
+            print("Player X wins!")
+            self.__playing = False
+
+        #check the left to right
+        tempscorediagonalleftright = 1
+        for i in range(1, 4):
+            if x-i >= 0:
+                if self.__boardGridBoxes[x-i][y].is_type(player):
+                    tempscorediagonalleftright += 1
+                else:
+                    break
+
+        for i in range(1, 4):
+            if x+i < constant.SIZEX:
+                if self.__boardGridBoxes[x+i][y].is_type(player):
+                    tempscorediagonalleftright += 1
+                else:
+                    break
+        
+        if tempscorediagonalleftright >= 4:
+            #fix with correct player
+            print("Player X wins!")
+            self.__playing = False
+
+        #check the up to down
+        tempscorediagonalupdown = 1
+        for i in range(1, 4):
+            if y-i >= 0:
+                if self.__boardGridBoxes[x][y-i].is_type(player):
+                    tempscorediagonalupdown += 1
+                else:
+                    break
+
+        for i in range(1, 4):
+            if y+i < constant.SIZEY:
+                if self.__boardGridBoxes[x][y+i].is_type(player):
+                    tempscorediagonalupdown += 1
+                else:
+                    break
+        
+        if tempscorediagonalupdown >= 4:
+            #fix with correct player
+            print("Player X wins!")
             self.__playing = False
